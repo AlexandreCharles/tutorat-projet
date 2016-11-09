@@ -1,0 +1,237 @@
+@media screen  and  (max-width: 400px) {
+    table{
+        font-size:0.5em;
+    }
+    h2{
+        font-size:0.7em;
+    }
+    li{
+        font-size:0.5em;
+    }
+    header div img{
+        display:none;
+    }
+    #navI{
+    background-color: darkblue;
+    background-image: url('headTexture.png');
+    margin-left:0;
+}
+    
+}
+@media screen  and (min-width: 400px) and  (max-width: 768px) {
+    table{
+        font-size:1em;
+    }
+    
+    header div img{
+        display:none;
+    }
+   #navI{
+    background-color: darkblue;
+    background-image: url('headTexture.png');
+    margin-left:0;
+}
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+   table{
+        font-size:1em;
+    }
+    .none{
+        display:none;
+    }
+}
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  table{
+        font-size:1em;
+    }
+  
+}
+@media screen and (min-width: 1200px) {
+   table{
+        font-size:1em;
+    }
+    
+    
+}
+th,td{
+    border:0.1em solid rgb(221,221,221);
+}
+
+body{
+    background-color: rgba(127, 143, 166, 1);
+}
+nav{
+    height: 50px;
+    border-radius: 10px;
+    
+}
+nav a{
+    color:rgba(250,246,225,1);
+}
+.contenu{
+    
+}
+aside{
+    background-color: rgba(250,246,225,1);
+    border-radius: 10px;
+}
+article{
+    background-color: rgba(250,246,225,1);
+    border-radius: 10px;
+}
+img{
+    border-radius:10px;
+    margin:auto;
+    margin-bottom:15px;
+    width:90%;
+    max-width:500px;
+    height: auto;
+}
+header{
+    text-align:center;
+}
+#titreLogin{
+    background-color: rgba(5, 2, 44,1);
+    padding:15px;
+    width:100%;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    border-bottom:1px black solid;
+}
+#myLogin{
+    border-radius:10px;
+    border:1px black solid;
+    
+    background-color: midnightblue;
+}
+#buttonAdd,#buttonEdit{
+    margin:0.1em;
+}
+#annonce{
+    color:black;
+}
+/*couleur des placeholder*/
+::-webkit-input-placeholder { /* Chrome */
+  color: black !important;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: black !important;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: black !important;
+  opacity: 1;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  color: black !important;
+  opacity: 1;
+}
+/**/
+.titre{
+    background-color:  rgba(5, 2, 44,1);
+    padding:15px;
+    width:100%;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    border-bottom:1px black solid;
+}
+.myDiv{
+    border-radius:10px;
+    border:1px black solid;
+    color:white;
+    background-color: midnightblue;
+}
+.none{
+    display:none;
+}
+
+td{
+    color:beige;
+    background-color: darkgray;
+    margin:1px;
+}
+td a{
+    color:darkred;
+    text-decoration: underline;
+}
+th{
+    color:darkblue;
+    background-color: cornflowerblue;
+    margin:1px;
+}
+table{
+    border:none;
+}
+h2{
+    color:white;
+}
+/*topbar*/
+#topBar{
+    background-color: darkblue;
+    background-image: url('headTexture.png');
+    min-height: 3em;
+    font-family: fantasy;
+    font-size: 1.5em;
+    padding-top:0.5em;
+    padding-left:0.5em;
+    border-radius: 0 !important;
+}
+
+#topBar img{
+    height: 2em;
+    width: auto;
+    border-radius: 5px; 
+}
+#topBar a:hover{
+    color:green;
+}
+/*footer*/
+footer{
+    font-family:sans-serif;
+    font-size: 1em;
+    background-color: darkblue !important;
+    background-image: url('headTexture.png');
+    border-radius: 0 !important;
+    text-align: center;
+    color: gray;  
+    padding: 1em;
+}
+footer a{
+    color: darkgray
+}
+footer a:hover{
+    color: darkgreen;
+}
+/*bloquer la taille de textarea*/
+textarea{ 
+    resize:none;
+}
+/*modification theme*/
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+    border:none;
+}
+.navbar,.navbar-brand{
+    margin-bottom:0;
+}
+#navbar{
+    margin-top: -0.3em;
+    width:100%;
+}
+p.navbar-brand{
+    color:white !important;
+}
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: blue;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: blue;
+}
+.list-group-item {
+    background-color: gray;
+}
