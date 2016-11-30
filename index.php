@@ -1,7 +1,7 @@
 <?php
 $titrePage= "Index";
+include 'config.php';
 include 'haut.php';
-
 ?>
 <div class='row'>
     <h2 class='col-md-12'><i class="fa fa-users" aria-hidden="true"></i> Etudiants</h2>
@@ -24,30 +24,37 @@ include 'haut.php';
 include 'bas.php';
 ?>
 <script>
-    
-        $(document).ready(function() {
-            //fonction liste juron
-            function listeTable(donneesJSON){
-                var nb=donneesJSON.length;
-                var ens;
-                var resultat='<tr class="row"><th class="col-md-3">Matricule</th><th class="col-md-3">Nom</th><th class="col-md-3">Prenom</th><th class="col-md-3">Tuteur</th></tr>';
-                if(nb>0){
-                    for(var i=0;i<nb;i++){
-                        if(donneesJSON[i].ens_nom=="" && donneesJSON[i].ens_prenom==""){
-                            ens="AUCUN TUTEUR";
-                        }else{
-                            ens=donneesJSON[i].ens_nom+" "+donneesJSON[i].ens_prenom;
-                        }
-                        resultat+='<tr class="row"><td class="col-md-3"><form method="get" action="etudiant.php"><input type="text" value="'+donneesJSON[i].etu_mat+'" name="id" class="none"/> <input type="submit" value="'+donneesJSON[i].etu_mat+'" class="btn btn-info" /></form></td><td class="col-md-3">'+donneesJSON[i].etu_nom+'</td><td class="col-md-3">'+donneesJSON[i].etu_prenom+'</td><td class="col-md-3">'+ens+'</td></tr>';
+    $(document).ready(function() {
+        //fonction liste table
+        function listeTable(donneesJSON){
+            var nb=donneesJSON.length;
+            var ens;
+            var resultat='<tr class="row"><th class="col-md-3">Matricule</th><th class="col-md-3">Nom</th><th class="col-md-3">Prenom</th><th class="col-md-3">Tuteur</th></tr>';
+            if(nb>0){
+                for(var i=0;i<nb;i++){
+                    if(donneesJSON[i].ens_nom==null && donneesJSON[i].ens_prenom==null){
+                        ens="AUCUN TUTEUR";
+                    }else{
+                        ens=donneesJSON[i].ens_nom+" "+donneesJSON[i].ens_prenom;
                     }
-                }else{
-                    resultat="<tr><th>AUCUN ETUDIANT TROUVER<th></tr>";
+                    resultat+='<tr class="row"><td class="col-md-3"><form method="get" action="etudiant.php"><input type="text" value="'+donneesJSON[i].etu_mat+'" name="id" class="none"/> <input type="submit" value="'+donneesJSON[i].etu_mat+'" class="btn btn-info" /></form></td><td class="col-md-3">'+donneesJSON[i].etu_nom+'</td><td class="col-md-3">'+donneesJSON[i].etu_prenom+'</td><td class="col-md-3">'+ens+'</td></tr>';
                 }
-                return resultat;
+            }else{
+                resultat="<tr><th>AUCUN ETUDIANT TROUVER<th></tr>";
             }
-            //au lancement de la page
-            search=$("#search");
-            liste=$("#table");
+            return resultat;
+        }
+        //variable
+        search=$("#search");
+        liste=$("#table");
+        //au lancement de la page
+        ajaxIndex();
+        //quand on rajoute/supprime un caractère 
+        search.keyup(function(){
+            ajaxIndex();
+        });
+        //on utilise ajax pour le dynamisme et on le met dans une fonction
+        function ajaxIndex(){
             text=search.val();
             $.ajax({
                 'url' : 'ajax_search.php',
@@ -62,22 +69,6 @@ include 'bas.php';
                     liste.html("<tr><th>Erreur: "+statut+"</th></tr>");
                 }
             })
-            //quand on rajoute/supprime un caractère 
-            search.keyup(function(){
-                 text=search.val();
-                $.ajax({
-                    'url' : 'ajax_search.php',
-                    'type' : 'POST',
-                    'data' : 'val='+text,
-                    'dataType' : 'json',
-                    'success' : function(donneesJSON, statut){
-                        var resultat=listeTable(donneesJSON);
-                        liste.html(resultat);
-                     },
-                    'error' : function (){
-                        liste.html("<tr><th>Erreur: "+statut+"</th></tr>");
-                    }
-                })
-            });
-        });
-    </script>
+        }
+    });
+</script>

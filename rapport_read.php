@@ -1,6 +1,6 @@
 <?php
     $titrePage="Rapport";
-    include 'haut.php';
+    include 'config.php';
     if(isset($_GET['id'])){
         $id_rap=$_GET['id'];
         //initialisation
@@ -24,7 +24,7 @@
                 $date_rdv=date_create($date);
                 $date_rdv=date_format($date_rdv,"d/m/Y");
                 $desc_rap=$lg['rdv_descri'];
-                if($lg['rdv_type']==true){
+                if($lg['rdv_type']==1){
                     $rdv_type="la famille";
                 }else{
                     $rdv_type="l'etudiant";
@@ -39,8 +39,9 @@
         header("Location: index.php");
     }
         
-    
+  include 'haut.php';  
 ?>
+
 <div class='row'>
     <h2 class='col-xs-12'><i class="fa fa-clone" aria-hidden="true"></i> Rapport <?php echo $id_rap; ?></h2>
     <div class="col-xs-12">
@@ -58,7 +59,10 @@
         <?php
     
        if($_SESSION['ens_mat'] == $mat_ens){
-           echo '<div type="button" class="col-xs-12"><span class="col-md-8"></span><a href="rapport_edit.php?id_rap='.$id_rap.'&id_red='.$mat_ens.'" class="col-md-3 btn btn-large btn-primary" id="button">Editer</a></div>';
+           echo '<div type="button" class="col-xs-12"><span class="col-md-8"></span>
+           <form action="rapport_edit.php" method="post"><input type="text" name="id_rap"  style="display:none" value="'.$id_rap.'"/><input type="text" name="id_red" style="display:none" value="'.$ens_mat.'"/> <input type="submit" value="Edition du rapport"  class="btn btn-info"/> </form>
+           
+           </div>';
        }
         
     ?>

@@ -5,8 +5,8 @@ class BDD {
 	//cette fonction permet de se connecter au SGBD et à une base de données
 		$message="";
 		$PARAM_nom_bd="$nombdd"; // le nom de votre base de données
-		$PARAM_utilisateur='root'; // nom d'utilisateur pour se connecter
-		$PARAM_mot_passe=''; // mot de passe de l'utilisateur pour se connecter
+		$PARAM_utilisateur='tutorat'; // nom d'utilisateur pour se connecter
+		$PARAM_mot_passe='tutorat'; // mot de passe de l'utilisateur pour se connecter
 		$PARAM_hote='localhost'; // le chemin vers le serveur
 		$pdo_options[PDO::MYSQL_ATTR_INIT_COMMAND] = "SET NAMES 'UTF8'";//encodage utf-8
 		try{
@@ -75,7 +75,7 @@ function insert($requete, $auto='n'){
 		return $message;
 	}
 
-
+//prepare select
 	function prepare_select($requete,$param){
 		$message="";
 		try
@@ -97,5 +97,19 @@ function insert($requete, $auto='n'){
 
 
 
+
+//prepare insert
+    function prepare_insert($requete,$param){
+        $message="";
+        try{
+            $sth=$this->connexion->prepare($requete,array(PDO::ATTR_CURSOR=>PDO::CURSOR_FWDONLY));
+		    $sth->execute($param);
+        }catch(Exception $ex){
+            $message="problème pour executer la requete: $requete";
+            $message=$message.$ex->getMessage();
+            
+        }
+        return $message;
+    }
 }
 ?>
